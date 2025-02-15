@@ -35,3 +35,8 @@ The script will:
 To convert the output to PDF, run:
 
 `marp summaries/key_facts_2e.md --pdf`
+
+# Prerequisites
+
+You'll need marp installed.
+`npm install -g @marp-team/marp-cli`
