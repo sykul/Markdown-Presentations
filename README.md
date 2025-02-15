@@ -20,23 +20,36 @@ If you need to create new lessons, add them to `manifest.csv` and run the `pytho
 
     Run the script:
 
-`python3 compile_key_facts.py`
+`python3 compile_key_facts.py [class]`
+With optional input and output directory, e.g.:
+`python3 compile_key_facts.py 2e --input-dir presentations --output-dir 'summaries'`
 
 The script will:
 
 -   Look for all Markdown files in presentations/ matching the specified class.
 -   Extract "Key Facts" sections.
 -  Sort them chronologically.
-3. Customization
-
-    To extract Key Facts for a different class, change the CLASS_NAME variable in the script.
-    To change the order, modify the sorting logic in files.sort().
 
 To convert the output to PDF, run:
 
-`marp summaries/key_facts_2e.md --pdf`
+`./convert_all.sh summaries "pdf summaries"`
 
-# Prerequisites
 
-You'll need marp installed.
-`npm install -g @marp-team/marp-cli`
+
+## Prerequisites
+
+- **Python 3**  
+  (Required for running `generate_presentations.py` and `compile_key_facts.py`)
+
+- **Marp CLI**  
+  Install using [npm](https://www.npmjs.com/) if not already installed:
+  `npm install -g @marp-team/marp-cli`
+
+- **Jinja2**
+    `sudo apt install python3-jinja2`
+
+## Additional Notes
+
+- The generate_presentations.py script will not overwrite existing Markdown files. This allows you to manually edit and adjust presentations without losing your changes.
+- The convert_all.sh script accepts two arguments: the input directory containing Markdown files and the output directory where PDFs will be saved.
+- The compile_key_facts.py script extracts the "Key Facts" section from each presentation Markdown file based on a regex pattern and compiles them into one summary file per class.
